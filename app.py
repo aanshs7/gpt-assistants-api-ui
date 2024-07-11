@@ -33,12 +33,6 @@ enabled_file_upload_message = os.environ.get(
     "ENABLED_FILE_UPLOAD_MESSAGE", "Upload a file"
 )
 
-
-assistant_id_ = st.selectbox('Choose your fighter: ',
-                            ('ADQ assistant', 'know all assistant'), on_change=sel_box_change)
-
-assistant_id = assistant_ids[assistant_id_]
-
 def sel_box_change():
     global assistant_id
     global assistant_ids
@@ -46,6 +40,13 @@ def sel_box_change():
     assistant_id = assistant_ids[assistant_id_]
     if 'thread' in st.session_state.keys():
         del st.session_state['thread']
+
+assistant_id_ = st.selectbox('Choose your fighter: ',
+                            ('ADQ assistant', 'know all assistant'), on_change=sel_box_change)
+
+assistant_id = assistant_ids[assistant_id_]
+
+
 
 # Load authentication configuration
 if authentication_required:
