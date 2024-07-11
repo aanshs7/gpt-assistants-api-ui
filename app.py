@@ -42,7 +42,7 @@ def sel_box_change():
         del st.session_state['thread']
 
 assistant_id = st.selectbox('Choose your fighter: ',
-                            ('ADQ assistant', 'know all assistant'))
+                            ('ADQ assistant', 'know all assistant'), on_change=sel_box_change)
 
 assistant_id = assistant_ids[assistant_id]
 
