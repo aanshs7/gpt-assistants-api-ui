@@ -25,13 +25,18 @@ azure_openai_endpoint = os.environ.get("AZURE_OPENAI_ENDPOINT")
 azure_openai_key = os.environ.get("AZURE_OPENAI_KEY")
 openai_api_key = os.environ.get("OPENAI_API_KEY")
 authentication_required = str_to_bool(os.environ.get("AUTHENTICATION_REQUIRED", False))
-assistant_id = os.environ.get("ASSISTANT_ID")
+assistant_ids = {"ADQ assistant":os.environ.get("ASSISTANT_ID_ADQ"), 
+                 "know all assistant":os.environ.get("ASSISTANT_ID_knowall")}
 instructions = os.environ.get("RUN_INSTRUCTIONS", "")
 assistant_title = os.environ.get("ASSISTANT_TITLE", "Assistants API UI")
 enabled_file_upload_message = os.environ.get(
     "ENABLED_FILE_UPLOAD_MESSAGE", "Upload a file"
 )
 
+assistant_id = st.selectbox('Choose your fighter: ',
+                            ('ADQ assistant', 'know all assistant'))
+
+assistant_id = assistant_ids[assistant_id]
 
 # Load authentication configuration
 if authentication_required:
